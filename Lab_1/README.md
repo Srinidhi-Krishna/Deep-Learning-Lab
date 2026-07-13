@@ -45,7 +45,7 @@ Lab1_Perceptron/
 ├── README.md                 <- this file
 ├── DL_LAB_1.ipynb             <- main notebook (all code + outputs)
 ├── report/
-│   └── DL_Lab1_Report.tex     <- full LaTeX lab report
+│   └── DL_Lab_1_Report.pdf    <- full pdf lab report
 └── figures/                   <- generated plots (.eps + .pdf), 600 DPI
     ├── Fig1_Histograms.eps / .pdf
     ├── Fig2_CorrelationHeatmap.eps / .pdf
