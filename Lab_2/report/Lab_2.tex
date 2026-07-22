@@ -1,0 +1,423 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,longtable}
+\usepackage{graphicx}
+\graphicspath{{./}{figures/}}
+
+\usepackage{mathptmx} % Times New Roman for text and math
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[table]{xcolor}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{caption}
+
+\captionsetup{font=small,labelfont=bf,justification=centering}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Shiv Nadar University Chennai}\\[2mm]
+\end{center}
+
+\renewcommand{\arraystretch}{1.4}
+
+\begin{tabular}{|p{3.5cm}|p{8cm}|p{2cm}|}
+\hline
+\rowcolor{blue!8}
+Name of Student & \textbf{KR Srinidhi Rajamane} & Reg.\ No.\\[1mm]
+\rowcolor{blue!8}
+ & & \textbf{24011101059}\\
+\hline
+Degree \& Branch &
+\begin{tabular}[t]{@{}l@{}}
+B.Tech Artificial Intelligence \& Data Science\\
+Section A
+\end{tabular}
+&
+Semester V\\
+\hline
+Subject Code \& Name & CS3807 -- Deep Learning Laboratory & AY: 2026--27\\ \hline
+\end{tabular}
+
+\vspace{3mm}
+
+\begin{center}
+\Large\textbf{Experiment 2}\\
+\large\textbf{Implementation of a Multi-Layer Perceptron (MLP) for Multi-Class Image Classification}
+\end{center}
+
+%----------------------------------------------------------
+
+\section*{1. Objective}
+Implement an MLP using TensorFlow/Keras on the Fashion-MNIST dataset. Learn image preprocessing, flattening, model construction, training, evaluation, and automated hyperparameter optimization.
+
+%----------------------------------------------------------
+
+\section*{2. Background Theory}
+An MLP consists of an input layer, hidden layers and an output layer.
+
+\[
+z^{(l)}=W^{(l)}a^{(l-1)}+b^{(l)},\qquad
+a^{(l)}=f(z^{(l)})
+\]
+
+Output layer:
+\[
+\hat y=\mathrm{Softmax}(z)
+\]
+
+Loss:
+\[
+L=-\sum_i y_i\log(\hat y_i)
+\]
+
+Recommended architecture:
+
+\begin{center}
+784 $\rightarrow$ Dense(128, ReLU) $\rightarrow$ Dense(64, ReLU) $\rightarrow$ Dense(10, Softmax)
+\end{center}
+
+%----------------------------------------------------------
+
+\section*{3. Dataset Description}
+
+\textbf{Dataset:} Fashion-MNIST
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Training Images & 60,000\\
+\hline
+Testing Images & 10,000\\
+\hline
+Classes & 10\\
+\hline
+Image Size & $28 \times 28$ (grayscale)\\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Class Labels}
+
+T-shirt/top, Trouser, Pullover, Dress, Coat, Sandal, Shirt, Sneaker, Bag, Ankle boot.
+
+
+
+%----------------------------------------------------------
+
+\section*{4. Experimental Procedure}
+
+\textbf{Task 1: Dataset Exploration}
+\begin{itemize}
+\item Load Fashion-MNIST.
+\item Print dataset dimensions.
+\item Display ten sample images.
+\item Plot class distribution.
+\end{itemize}
+
+\textbf{Expected Output:}
+Dataset summary and sample images.
+
+\bigskip
+
+\textbf{Task 2: Data Preprocessing}
+
+\begin{itemize}
+\item Flatten images.
+\item Normalize pixel values.
+\item Print tensor shapes before and after preprocessing.
+\end{itemize}
+
+\bigskip
+
+\textbf{Task 3: Model Construction}
+
+Construct an MLP with
+
+\begin{itemize}
+\item Input layer (784)
+\item Dense(128, ReLU)
+\item Dense(64, ReLU)
+\item Dense(10, Softmax)
+\end{itemize}
+
+Display \texttt{model.summary()}.
+
+\bigskip
+
+\textbf{Task 4: Model Training}
+
+Compile using
+
+\begin{itemize}
+\item Optimizer: Adam
+\item Loss: Categorical Cross Entropy
+\item Metric: Accuracy
+\end{itemize}
+
+Train for 20 epochs with batch size 32.
+
+\bigskip
+
+\textbf{Task 5: Model Evaluation}
+
+Compute
+
+\begin{itemize}
+\item Accuracy
+\item Precision
+\item Recall
+\item F1-score
+\item Confusion Matrix
+\item Classification Report
+\end{itemize}
+
+%----------------------------------------------------------
+
+\section*{5. Hyperparameter Optimization}
+
+\textbf{Search Space}
+
+\begin{center}
+\begin{tabular}{|p{5cm}|p{7cm}|}
+\hline
+\textbf{Hyperparameter} & \textbf{Candidate Values}\\
+\hline
+Hidden Layers & 1, 2, 3\\
+Hidden Neurons & 32, 64, 128, 256\\
+Learning Rate & 0.1, 0.01, 0.001\\
+Batch Size & 16, 32, 64, 128\\
+Epochs & 10, 20, 30\\
+Optimizer & SGD, Adam, RMSProp\\
+Activation Function & ReLU, Tanh, Sigmoid\\
+Dropout Rate & 0.0, 0.2, 0.5\\
+\hline
+\end{tabular}
+\end{center}
+
+
+%----------------------------------------------------------
+
+\section*{6. Source Code}
+
+The complete implementation was carried out in Python using TensorFlow/Keras, NumPy, Pandas, Matplotlib, Seaborn and Scikit-learn. The full, executable source code (organized cell-wise, exactly as it was run) is available on GitHub:
+
+\begin{center}
+\href{https://github.com/Srinidhi-Krishna/Deep-Learning-Lab/blob/main/Lab_2/DL_LAB_2.ipynb}{\textbf{https://github.com/Srinidhi-Krishna/Deep-Learning-Lab/blob/main/Lab\_2/DL\_LAB\_2.ipynb}}
+\end{center}
+
+%----------------------------------------------------------
+
+\section*{7. Generated Plots with Interpretation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{fig1_sample_images}
+\caption{Ten sample images from the Fashion-MNIST training set with class labels.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} This plot displaying the ten samples show high inter-class shape variation. Thus this confirms the dataset's suitability for a classification task .
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth]{fig2_class_distribution}
+\caption{Class distribution across the 10 Fashion-MNIST categories in the training set.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} This plot shows that all the 10 classes contain exactly 6,000 training images thereby displaying a perfectly balanced dataset. This shows that there is no need for class re-weighting or resampling during training.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth]{fig3_train_accuracy}
+\caption{Training vs. validation accuracy across 20 epochs (baseline model).}
+\end{figure}
+
+\noindent\textbf{Interpretation:} This plot gives the training vs validation accuracy across 20 epochs. Training accuracy rises steadily while validation accuracy plateaus by epoch 10 indicating the model is learning discriminative features but with a widening train-validation gap. Thus this indicates mild overfitting in later epochs.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.58\textwidth]{fig4_val_accuracy}
+\caption{Validation accuracy vs. epoch (baseline model).}
+\end{figure}
+
+\noindent\textbf{Interpretation:} This plot shows the validation accuracy vs epoch. We can observe that the Validation accuracy climbs quickly in the first 5 epochs then flattens suggesting the baseline model is close to its representational ceiling on this dataset.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.58\textwidth]{fig5_train_loss}
+\caption{Training loss vs. epoch (baseline model).}
+\end{figure}
+
+\noindent\textbf{Interpretation:} This plot gives the training loss vs epoch. Categorical cross-entropy loss decreases monotonically  thereby confirming stable convergence of the Adam optimizer with no oscillation or divergence across the 20 training epochs.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.58\textwidth]{fig6_val_loss}
+\caption{Validation loss vs. epoch (baseline model).}
+\end{figure}
+
+\noindent\textbf{Interpretation:} This plot gives the validation loss vs epoch. Validation loss decreases along with the training loss for the first 5 to 6 epochs but then begins to rise again after epoch 8 even as training loss keeps falling. This is an early sign of overfitting which is consistent with the widening gap seen in Figure~3.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\textwidth]{fig7_confusion_matrix_baseline}
+\caption{Confusion matrix on the test set (baseline model, 10,000 samples).}
+\end{figure}
+
+\noindent\textbf{Interpretation:} This plot gives the confusion matrix on the test set. Most misclassifications occur between visually similar classes eg : particularly Shirt vs. T-shirt/top and Shirt vs. Pullover/Coat.This explains why Shirt has the lowest per-class F1-score of 0.66 of all ten categories.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.78\textwidth]{fig8_hyperparam_search_results}
+\caption{Top 10 hyperparameter configurations ranked by mean 5-fold cross-validation accuracy.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} This plot gives the Top 10 hyperparameter configurations ranked by mean 5-fold cross-validation accuracy. The top 10 configurations cluster tightly, indicating that several distinct hyperparameter combinations (differing in depth, activation, and optimizer) achieve near-optimal performance.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth]{fig9_model_comparison}
+\caption{Baseline vs. optimized model performance across four evaluation metrics.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} This plot gives the Baseline vs. optimized model performance across four evaluation metrics.Performance metrics are slightly higher for the baseline model. By reducing overfitting the optimized model shows better generalization.
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\textwidth]{fig7b_confusion_matrix_optimized}
+\caption{Confusion matrix on the test set (optimized model, 10,000 samples).}
+\end{figure}
+
+\noindent\textbf{Interpretation:} This plot give the Confusion matrix on the test set . The optimized model shows that the classification of similar tops have improved slightly. The classification for the other classes has also improved.
+
+\FloatBarrier
+%----------------------------------------------------------
+
+\section*{8. Baseline Model -- Test Set Results}
+
+\begin{center}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Metric} & \textbf{Value}\\
+\hline
+Accuracy  & 0.8760 (87.60\%)\\
+Precision (macro) & 0.8780 (87.80\%)\\
+Recall (macro)    & 0.8760 (87.60\%)\\
+F1-score (macro)  & 0.8740 (87.40\%)\\
+\hline
+\end{tabular}
+\end{center}
+
+
+%----------------------------------------------------------
+
+\section*{9. Results}
+
+\textbf{Best Hyperparameters (from Randomized Search, 5-fold CV)}
+
+\begin{tabular}{|p{6cm}|p{6cm}|}
+\hline
+Hidden Layers & 3\\\hline
+Hidden Neurons & 256\\\hline
+Learning Rate & 0.001\\\hline
+Batch Size & 16\\\hline
+Optimizer & Adam\\\hline
+Activation Function & Sigmoid\\\hline
+Epochs & 20\\\hline
+Dropout & 0.2\\\hline
+Cross-validation Accuracy & 0.8561 (85.61\%)\\\hline
+Testing Accuracy & 0.8846 (88.46\%)\\\hline
+\end{tabular}
+
+\textbf{Performance Comparison}
+
+\begin{tabular}{|p{4cm}|c|c|}
+\hline
+Metric & Baseline & Optimized\\
+\hline
+Accuracy & 0.8760 & 0.8846\\
+Precision & 0.8780 & 0.8867\\
+Recall & 0.8760 & 0.8846\\
+F1-score & 0.8740 & 0.8819\\
+Training Time (s) & 86.93 & 345.55\\
+\hline
+\end{tabular}
+
+%----------------------------------------------------------
+
+\section*{10. Discussion}
+
+\textbf{1. Which optimization method was used?}
+
+A Randomized Search over the defined hyperparameter space, evaluated with 5-fold cross-validation on a subset of 10,000 training samples. 
+
+\textbf{2. Which hyperparameters were selected?}
+
+3 hidden layers, 256 neurons per layer, learning rate 0.001, batch size 16, Adam optimizer, Sigmoid activation, 20 epochs, dropout rate 0.2.
+
+\textbf{3. Did optimization improve performance?}
+
+Yes, modestly. The test accuracy improved from 87.60\% to 88.46\%. The gain is consistent, but small in absolute terms.
+
+\textbf{4. Which hyperparameter had the greatest impact?}
+
+The depth and width of the network (hidden layers = 3, neurons = 256) along with the activation function appear to matter the most.
+
+\textbf{5. Compare Grid Search and Randomized Search.}
+
+Grid Search exhaustively evaluates every combination in the search space, but its cost grows with the number of hyperparameters and candidate values and so it is computationally infeasible to fully cross-validate. Randomized Search instead samples a fixed budget of configurations (20, in this experiment) from the space, trading the guarantee of finding the single best combination for the ability to explore a much larger, higher-dimensional space within a practical time budget. 
+
+\textbf{6. Recommend the best MLP configuration.}
+
+Based on the search results, the recommended configuration is: 2--3 hidden layers, 128--256 neurons per layer, ReLU or Sigmoid activation, learning rate 0.001, Adam optimizer, trained for 20 epochs. This balances the accuracy gains of a deeper network with the increased training time.
+
+
+%----------------------------------------------------------
+
+\section*{11. Conclusion}
+
+A Multi-Layer Perceptron was implemented and evaluated on the Fashion-MNIST dataset. The baseline architecture achieved 87.60\% test accuracy. Automated hyperparameter optimization via a manually implemented Randomized Search identified a deeper and wider configuration that improved test accuracy to 88.46\%. 
+
+%----------------------------------------------------------
+
+\section*{12. References}
+
+\begin{enumerate}
+\item I. Goodfellow, Y. Bengio and A. Courville, \emph{Deep Learning}, MIT Press, 2016.
+\item C. M. Bishop, \emph{Pattern Recognition and Machine Learning}, Springer, 2006.
+\item S. Haykin, \emph{Neural Networks and Learning Machines}, Pearson, 2009.
+\item H. Xiao, K. Rasul and R. Vollgraf, ``Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms,'' 2017.
+\item TensorFlow/Keras Documentation.
+\item Scikit-learn Documentation: \texttt{RandomizedSearchCV}, \texttt{KFold}.
+\end{enumerate}
+
+\end{document}
