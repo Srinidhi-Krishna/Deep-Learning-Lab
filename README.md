@@ -37,8 +37,8 @@ CS3807-Deep-Learning-Lab/
 
 | Lab | Experiment | Status |
 |-----|------------|--------|
-| Lab 1 | Single Layer Perceptron for Binary Classification | ✅ Completed |
-| Lab 2 | To be added | 🚧 |
+| Lab 1 | Single Layer Perceptron for Binary Classification | Completed |
+| Lab 2 | To be added | Completed |
 | Lab 3 | To be added | 🚧 |
 | Lab 4 | To be added | 🚧 |
 | Lab 5 | To be added | 🚧 |
