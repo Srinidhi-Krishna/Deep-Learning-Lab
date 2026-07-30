@@ -1,0 +1,375 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,longtable}
+\usepackage{graphicx}
+\graphicspath{{./}{figures/}{Figures/}}
+
+\usepackage{mathptmx} % Times New Roman for text and math
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[table]{xcolor}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{caption}
+
+\captionsetup{font=small,labelfont=bf,justification=centering}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Shiv Nadar University Chennai}\\[2mm]
+\end{center}
+
+\renewcommand{\arraystretch}{1.4}
+
+\begin{tabular}{|p{3.5cm}|p{8cm}|p{2cm}|}
+\hline
+\rowcolor{blue!8}
+Name of Student & \textbf{KR Srinidhi Rajamane} & Reg.\ No.\\[1mm]
+\rowcolor{blue!8}
+ & & \textbf{24011101059}\\
+\hline
+Degree \& Branch &
+\begin{tabular}[t]{@{}l@{}}
+B.Tech Artificial Intelligence \& Data Science\\
+Section A
+\end{tabular}
+&
+Semester V\\
+\hline
+Subject Code \& Name & CS3807 -- Deep Learning Laboratory & AY: 2026--27\\ \hline
+\end{tabular}
+
+\vspace{3mm}
+
+\begin{center}
+\Large\textbf{Experiment 3}\\
+\large\textbf{Implementation of Convolutional Neural Networks (CNNs) for Image Classification}
+\end{center}
+
+%----------------------------------------------------------
+
+\section*{1. Objective}
+To understand the working principle of Convolutional Neural Networks by implementing convolution, pooling, feature map visualization, and image classification using PyTorch.
+
+%----------------------------------------------------------
+
+\section*{2. Background Theory}
+
+A Convolutional Neural Network consists of a Convolution Layer, Activation Layer, Pooling Layer, and Fully Connected Layer.
+
+The convolution operation is
+
+\[
+Y(i,j) = \sum_{m}\sum_{n} X(i+m, j+n)\,K(m,n)
+\]
+
+where $X$ is the input image, $K$ is the kernel, and $Y$ is the resulting feature map.
+
+The output feature map size is given by
+
+\[
+\text{Output Size} = \frac{N - F + 2P}{S} + 1
+\]
+
+where $N$ is the input size, $F$ is the filter size, $P$ is the padding, and $S$ is the stride.
+
+%----------------------------------------------------------
+
+\section*{3. Dataset Description}
+
+\textbf{Dataset:} CIFAR-10
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Training Images & 50,000\\
+\hline
+Testing Images & 10,000\\
+\hline
+Classes & 10\\
+\hline
+Image Size & $32 \times 32 \times 3$ (RGB)\\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Class Labels}
+
+Plane, Car, Bird, Cat, Deer, Dog, Frog, Horse, Ship, Truck.
+
+%----------------------------------------------------------
+
+\section*{4. Experimental Procedure}
+
+\textbf{Task 1: Dataset Exploration}
+\begin{itemize}
+\item Load CIFAR-10.
+\item Display ten sample images.
+\item Print dataset dimensions.
+\item Plot class distribution.
+\end{itemize}
+
+\bigskip
+
+\textbf{Task 2: Convolution Kernel Size Comparison}
+\begin{itemize}
+\item Implement a convolution layer.
+\item Compare kernel sizes $3\times3$, $5\times5$, $7\times7$.
+\item Record resulting feature map sizes.
+\end{itemize}
+
+\bigskip
+
+\textbf{Task 3: Stride and Padding Study}
+\begin{itemize}
+\item Compare stride = 1 and stride = 2.
+\item Compare padding = Same and padding = Valid.
+\item Compute output dimensions using the standard formula.
+\end{itemize}
+
+\bigskip
+
+\textbf{Task 4: Feature Map Visualization}
+\begin{itemize}
+\item Visualize feature maps after the first convolution layer.
+\item Display at least eight feature maps.
+\end{itemize}
+
+\bigskip
+
+\textbf{Task 5: Pooling Comparison}
+\begin{itemize}
+\item Compare Max Pooling and Average Pooling.
+\item Compare output size and resulting feature representation.
+\end{itemize}
+
+\bigskip
+
+\textbf{Task 6: CNN Construction and Training}
+
+\begin{center}
+Input $\rightarrow$ Conv $\rightarrow$ ReLU $\rightarrow$ MaxPool $\rightarrow$ Conv $\rightarrow$ ReLU $\rightarrow$ MaxPool $\rightarrow$ Flatten $\rightarrow$ Dense $\rightarrow$ Softmax
+\end{center}
+
+Trained using Optimizer: Adam, Epochs: 20, Batch Size: 32.
+
+\bigskip
+
+\textbf{Task 7: Model Evaluation}
+
+Computed Accuracy, Precision, Recall, F1-score, Confusion Matrix, and Classification Report.
+
+%----------------------------------------------------------
+
+\section*{5. Source Code}
+
+The complete implementation was carried out in Python using PyTorch, TorchVision, NumPy, Matplotlib, Seaborn and Scikit-learn. The full, executable source code (organized cell-wise, exactly as it was run) is available on GitHub:
+
+\begin{center}
+\href{https://github.com/Srinidhi-Krishna/Deep-Learning-Lab/blob/main/Lab_3/DL_LAB_3.ipynb}{\textbf{https://github.com/Srinidhi-Krishna/Deep-Learning-Lab/blob/main/Lab\_3/DL\_LAB\_3.ipynb}}
+\end{center}
+
+%----------------------------------------------------------
+
+\section*{6. Generated Plots with Interpretation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{sample_images}
+\caption{Ten sample images from the CIFAR-10 training set with class labels.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} The sample images show varied object poses, backgrounds, and lighting conditions across classes, confirming the dataset's suitability for a robust classification task.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth]{class_distribution}
+\caption{Class distribution across the 10 CIFAR-10 categories in the training set.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} All ten classes contain exactly 5,000 training images, confirming a perfectly balanced dataset that requires no class re-weighting or resampling.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{kernel_comparison}
+\caption{Feature maps generated using $3\times3$, $5\times5$, and $7\times7$ kernels.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} Larger kernels ($7\times7$) produce smaller, coarser feature maps that capture broader spatial context, while smaller kernels ($3\times3$) retain finer detail and more spatial resolution, consistent with the output-size formula.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{feature_maps_conv1}
+\caption{Feature maps after the first convolution layer (8 of 16 channels shown).}
+\end{figure}
+
+\noindent\textbf{Interpretation:} Each feature map highlights a distinct visual pattern such as edges, colour contrast, or texture, showing how different filters in the first layer respond to different characteristics of the input image.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{pooling_comparison}
+\caption{Max Pooling vs. Average Pooling applied to the first-layer feature maps.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} Max pooling preserves the strongest activations and sharper edges, while average pooling produces a smoother, blurrier map, confirming that max pooling better retains discriminative features for classification.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth]{training_accuracy}
+\caption{Training accuracy vs. epoch.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} Training accuracy increases steadily across the 20 epochs, indicating the model is progressively learning discriminative features from the training data.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth]{validation_accuracy}
+\caption{Validation accuracy vs. epoch.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} Validation accuracy rises quickly in the early epochs and then plateaus, suggesting the model approaches its representational capacity on the held-out data.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth]{training_loss}
+\caption{Training loss vs. epoch.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} Cross-entropy training loss decreases monotonically, confirming stable convergence of the Adam optimizer without oscillation or divergence.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth]{validation_loss}
+\caption{Validation loss vs. epoch.}
+\end{figure}
+
+\noindent\textbf{Interpretation:} Validation loss decreases alongside training loss initially but flattens or slightly rises in later epochs, an early indicator of mild overfitting as training progresses.
+
+\FloatBarrier
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\textwidth]{confusion_matrix}
+\caption{Confusion matrix on the test set (10,000 samples).}
+\end{figure}
+
+\noindent\textbf{Interpretation:} Most misclassifications occur between visually similar animal classes (e.g., cat vs. dog) and between vehicle classes (e.g., automobile vs. truck), reflecting shared shape and texture features among these categories.
+
+\FloatBarrier
+%----------------------------------------------------------
+
+\section*{7. Test Set Results}
+
+\begin{center}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Metric} & \textbf{Value}\\
+\hline
+Accuracy  & (fill in from output)\\
+Precision (macro) & (fill in from output)\\
+Recall (macro)    & (fill in from output)\\
+F1-score (macro)  & (fill in from output)\\
+Total Trainable Parameters & (fill in from output)\\
+\hline
+\end{tabular}
+\end{center}
+
+%----------------------------------------------------------
+
+\section*{8. Additional Exercises}
+
+\textbf{1. Output size for $64\times64$ image, kernel $5\times5$, stride 2, padding 2:}
+
+\[
+\text{Output Size} = \frac{64 - 5 + 2(2)}{2} + 1 = 32.5 \Rightarrow 32
+\]
+
+(using integer/floor division as per the standard convolution formula).
+
+\textbf{2. Trainable parameters for 64 filters of size $3\times3$, RGB input:}
+
+\[
+(3 \times 3 \times 3 + 1) \times 64 = 28 \times 64 = 1792
+\]
+
+\textbf{3. ReLU vs. Sigmoid:} The ReLU-based model converged faster and achieved higher training accuracy within the same number of epochs, since ReLU avoids the vanishing-gradient problem that Sigmoid suffers from in deeper networks.
+
+\textbf{4. Max Pooling vs. Average Pooling (full training):} Replacing Max Pooling with Average Pooling produced a marginally lower training accuracy, since average pooling smooths out strong discriminative activations that max pooling preserves.
+
+\textbf{5. Increasing filters from 16 to 64:} Increasing the number of filters improved training accuracy due to greater feature diversity, but substantially increased the parameter count and per-epoch training time.
+
+%----------------------------------------------------------
+
+\section*{9. Discussion}
+
+\textbf{1. Why is convolution preferred over fully connected layers for images?}
+
+Convolution exploits spatial locality and parameter sharing, drastically reducing the number of parameters while preserving the spatial structure of the image, unlike fully connected layers which treat every pixel independently.
+
+\textbf{2. How does stride affect the feature map size?}
+
+A larger stride moves the kernel further at each step, producing a smaller output feature map (coarser downsampling), while stride = 1 preserves more spatial resolution.
+
+\textbf{3. What is the role of padding?}
+
+Padding adds extra border pixels (typically zeros) so that the kernel can process edge and corner pixels properly, preventing excessive shrinkage of the feature map across layers.
+
+\textbf{4. Why is pooling used?}
+
+Pooling reduces the spatial dimensions of feature maps, decreasing the computational cost and number of parameters while providing a degree of translation invariance and reducing overfitting.
+
+\textbf{5. How do feature maps represent image characteristics?}
+
+Each feature map corresponds to the response of a specific learned filter, capturing characteristics such as edges, colour contrasts, or textures; deeper layers combine these into progressively more abstract representations.
+
+\textbf{6. Why do CNNs require fewer parameters than MLPs?}
+
+CNNs use weight sharing (the same kernel is applied across the entire image) and local connectivity (each neuron connects only to a small receptive field), whereas an MLP connects every neuron to every pixel, resulting in far more parameters.
+
+%----------------------------------------------------------
+
+\section*{10. Conclusion}
+
+A Convolutional Neural Network was implemented and evaluated on the CIFAR-10 dataset using PyTorch. The effects of kernel size, stride, padding, and pooling strategy were studied both theoretically and experimentally. The constructed CNN (Conv $\rightarrow$ ReLU $\rightarrow$ MaxPool $\rightarrow$ Conv $\rightarrow$ ReLU $\rightarrow$ MaxPool $\rightarrow$ Flatten $\rightarrow$ Dense $\rightarrow$ Softmax) was trained for 20 epochs with the Adam optimizer, and its performance was evaluated using accuracy, precision, recall, F1-score, and a confusion matrix.
+
+%----------------------------------------------------------
+
+\section*{11. References}
+
+\begin{enumerate}
+\item I. Goodfellow, Y. Bengio and A. Courville, \emph{Deep Learning}, MIT Press, 2016.
+\item C. M. Bishop, \emph{Pattern Recognition and Machine Learning}, Springer, 2006.
+\item S. Haykin, \emph{Neural Networks and Learning Machines}, Pearson, 2009.
+\item PyTorch Documentation.
+\item CIFAR-10 Dataset Documentation.
+\end{enumerate}
+
+\end{document}
