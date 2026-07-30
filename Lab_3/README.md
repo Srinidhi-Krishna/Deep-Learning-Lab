@@ -42,12 +42,13 @@ Implement and train a Convolutional Neural Network from first principles using P
 
 ## Repository Structure
 
+```
 Lab3_CNN/
 ├── README.md                 <- this file
 ├── DL_LAB_3.ipynb             <- main notebook (all code + outputs)
 ├── report/
-│   └── DL_Lab_3.pdf    <- full pdf lab report
-|   └── Lab_3.tex    <- full latex code of lab report
+│   ├── DL_Lab_3.pdf           <- full pdf lab report
+│   └── Lab_3.tex              <- full latex code of lab report
 └── figures/                   <- generated plots (.eps + .pdf), 600 DPI
     ├── sample_images.eps / .pdf
     ├── class_distribution.eps / .pdf
@@ -59,6 +60,7 @@ Lab3_CNN/
     ├── training_loss.eps / .pdf
     ├── validation_loss.eps / .pdf
     └── confusion_matrix.eps / .pdf
+```
 
 ## How to Run
 
@@ -68,6 +70,7 @@ Lab3_CNN/
 
 ## Requirements
 
+```
 numpy
 pandas
 matplotlib
@@ -75,6 +78,7 @@ seaborn
 scikit-learn
 torch
 torchvision
+```
 
 ## Report
 
