@@ -40,7 +40,7 @@ CS3807-Deep-Learning-Lab/
 | Lab 1 | Single Layer Perceptron for Binary Classification | Completed |
 | Lab 2 | Multi-Layer Perceptron for Multi-Class Image Classification | Completed |
 | Lab 3 | Implementation of Convolutional Neural Networks (CNNs) for Image Classification | Completed |
-| Lab 4 | To be added | 🚧 |
+| Lab 4 | Transfer Learning and Fine-Tuning of a Pretrained CNN (VGG16) for Image Classification | Completed |
 | Lab 5 | To be added | 🚧 |
 | Lab 6 | To be added | 🚧 |
 | Lab 7 | To be added | 🚧 |
