@@ -1,82 +1,50 @@
-# CS3807 – Deep Learning Laboratory
-
-This repository contains the implementation of laboratory experiments completed as part of **CS3807 – Deep Learning Laboratory** at **Shiv Nadar University Chennai**.
-
-Each laboratory experiment is organized into a separate directory containing:
-- Jupyter Notebook implementation
-- Detailed experiment-specific README
-- LaTeX report
-- Generated figures and visualizations
-- Supporting files (if any)
-
----
-
-## Repository Structure
-
-```
-CS3807-Deep-Learning-Lab/
-│
-├── Lab_1/
-│   ├── DL_LAB_1.ipynb
-│   ├── README.md
-│   ├── report/
-│   └── figures/
-│
-├── Lab_2/
-│
-├── Lab_3/
-│
-├── ...
-│
-└── README.md
-```
-
----
-
-## Laboratory Experiments
-
-| Lab | Experiment | Status |
-|-----|------------|--------|
-| Lab 1 | Single Layer Perceptron for Binary Classification | Completed |
-| Lab 2 | Multi-Layer Perceptron for Multi-Class Image Classification | Completed |
-| Lab 3 | Implementation of Convolutional Neural Networks (CNNs) for Image Classification | Completed |
-| Lab 4 | Transfer Learning and Fine-Tuning of a Pretrained CNN (VGG16) for Image Classification | Completed |
-| Lab 5 | Comprehensive Study of CNN Training, Regularization, Optimization, Hyperparameter Tuning, Transfer Learning and Cross-Validation | Completed |
-| Lab 6 | To be added | 🚧 |
-| Lab 7 | To be added | 🚧 |
-| Lab 8 | To be added | 🚧 |
-
----
-
-## Technologies Used
-
-- Python
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-- Scikit-learn
-- Jupyter Notebook
-- LaTeX
-
----
-
-## Course Information
+# Lab 5 — Comprehensive Study of CNN Training, Regularization, Optimization, Hyperparameter Tuning, Transfer Learning and Cross-Validation (MobileNetV2)
 
 **Course:** CS3807 – Deep Learning Laboratory
+**Program:** B.Tech Artificial Intelligence & Data Science, Shiv Nadar University Chennai
+**Experiment 5**
 
-**Program:** B.Tech Artificial Intelligence & Data Science
+## Objective
 
-**Institution:** Shiv Nadar University Chennai
+Systematically study the effect of weight initialization, regularization, optimization algorithms, CNN hyperparameters, transfer learning, fine-tuning and 5-fold cross-validation on image classification performance, using a single lightweight CNN architecture (MobileNetV2) on the Oxford-IIIT Pet dataset.
 
-**Academic Year:** 2026–2027
+## Dataset
 
----
+- **Source:** Oxford-IIIT Pet Dataset (direct download from robots.ox.ac.uk)
+- **Total Images:** 7,390
+- **Training Images:** 5,173
+- **Validation Images:** 1,108
+- **Testing Images:** 1,109
+- **Classes:** 37 pet breeds
+- **Image Size:** 224 x 224 x 3 (RGB, resized and MobileNetV2-preprocessed)
+- **Missing values:** A small number of corrupt JPEG files, automatically skipped by the tf.data decoding pipeline
 
-## Repository Highlights
+## What's in this notebook
 
-- From-scratch implementations of deep learning algorithms
-- Data preprocessing and exploratory data analysis
-- Model training and evaluation
-- Visualization of experimental results
-- Comprehensive LaTeX reports for every experiment
+- **Dataset Preparation** — direct download and extraction, breed-label parsing from filenames, 70/15/15 train/val/test split, MobileNetV2 preprocessing pipeline
+- **Weight Initialization Study** — Zero, Random, Xavier/Glorot and He initialization compared over 8-epoch runs on a frozen MobileNetV2 base
+- **Regularization Study** — No Regularization, L2, Dropout and Batch Normalization compared over 8-epoch runs
+- **Batch Normalization** — worked numerical example plus a With-BN vs. Without-BN comparison
+- **Optimizer Study** — SGD, Momentum, RMSProp and Adam compared over 8-epoch runs
+- **Hyperparameter Tuning** — learning rate, batch size and dropout rate swept independently over 5-epoch runs
+- **Transfer Learning and Fine-Tuning** — frozen-base feature extraction vs. fine-tuning of block_15, block_16 and Conv_1 at a reduced learning rate
+- **5-Fold Cross-Validation** — four candidate configurations (C1–C4) evaluated across 5 folds to select the final configuration
+- **Final Model Evaluation** — Accuracy, Precision, Recall, F1-score, Confusion Matrix on the untouched test set
+
+## Results Summary
+
+| Metric | Value |
+|---|---|
+| Test Accuracy | 91.88% |
+| Precision (weighted) | 91.75% |
+| Recall (weighted) | 91.56% |
+| F1-score (weighted) | 91.49% |
+| Best 5-Fold CV Configuration | C3 (Dropout 0.5, No BatchNorm, RMSProp, lr=1e-3) |
+| Mean CV Accuracy ± SD (C3) | 90.62% ± 0.54 |
+| Best Optimizer (peak val. accuracy) | Adam, 92.33% (converged by epoch 4) |
+| Total Parameters (final model) | 2,426,725 |
+| Training Time (final model) | 73.46 s |
+
+**Per-class notes:** the confusion matrix is overwhelmingly diagonal across all 37 breeds, with only a small number of off-diagonal misclassifications scattered between individual visually-similar breed pairs rather than concentrated in any one region.
+
+## Repository Structure
