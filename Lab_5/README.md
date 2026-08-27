@@ -48,3 +48,45 @@ Systematically study the effect of weight initialization, regularization, optimi
 **Per-class notes:** the confusion matrix is overwhelmingly diagonal across all 37 breeds, with only a small number of off-diagonal misclassifications scattered between individual visually-similar breed pairs rather than concentrated in any one region.
 
 ## Repository Structure
+
+    Lab5_CNNStudy/
+    ├── README.md                          <- this file
+    ├── DL_LAB_5.ipynb                     <- main notebook (all code + outputs)
+    ├── report/
+    │   ├── DL_Lab_5.pdf                   <- full pdf lab report
+    │   └── Lab_5.tex                      <- full latex code of lab report
+    └── figures/                           <- generated plots (.eps + .pdf), 600 DPI
+        ├── Plot1_TrainingLoss_Initialization.eps / .pdf
+        ├── Plot2_ValAccuracy_Initialization.eps / .pdf
+        ├── Plot3_TrainVal_Accuracy.eps / .pdf
+        ├── Plot4_TrainVal_Loss.eps / .pdf
+        ├── Plot5_BatchNorm_Comparison.eps / .pdf
+        ├── Plot6_TrainingLoss_Optimizers.eps / .pdf
+        ├── Plot7_ValAccuracy_Optimizers.eps / .pdf
+        ├── Plot8_LearningRate_ValAccuracy.eps / .pdf
+        ├── Plot9_BatchSize_ValAccuracy.eps / .pdf
+        ├── Plot10_Dropout_ValAccuracy.eps / .pdf
+        ├── Plot11_FeatureExtraction_vs_FineTuning.eps / .pdf
+        ├── Plot12_TrainVal_Loss_FineTuning.eps / .pdf
+        ├── Plot13_KFold_CV_Accuracy.eps / .pdf
+        └── Plot14_ConfusionMatrix.eps / .pdf
+
+## How to Run
+
+1. Open `DL_LAB_5.ipynb` in Kaggle Notebooks or Google Colab (GPU T4 x2 recommended for training speed).
+2. Run all cells top to bottom — the Oxford-IIIT Pet dataset downloads automatically from robots.ox.ac.uk, and MobileNetV2 ImageNet weights download automatically via `tensorflow.keras.applications`, so no manual download is needed.
+3. Generated figures are saved as `.eps` (600 DPI, required submission format) alongside a matching `.pdf` for fast LaTeX compilation.
+4. On Kaggle, figures and outputs are saved under `/kaggle/working/` and appear directly in the notebook's Output tab for download.
+
+## Requirements
+
+    numpy
+    pandas
+    matplotlib
+    seaborn
+    scikit-learn
+    tensorflow
+
+## Report
+
+The full lab report (theory, methodology, source code, results, and plot interpretations) is available in `report/Lab_5.tex`.
