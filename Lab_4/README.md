@@ -40,4 +40,39 @@ Implement transfer learning using a VGG16 convolutional neural network pretraine
 | Trainable Parameters (feature extraction) | 133,898 |
 | Trainable Parameters (after fine-tuning) | 7,213,322 |
 
-**Per-class notes:** Ship (85% F1), Automobile (83%
+**Per-class notes:** Ship (85% F1), Automobile (83% F1), and Frog (77% F1) were the best-classified categories; Cat had the lowest F1-score (54%), reflecting frequent confusion with visually similar animal classes (dog, deer).
+
+## Repository Structure
+
+    Lab4_TransferLearning/
+    ├── README.md                     <- this file
+    ├── DL_LAB_4.ipynb                 <- main notebook (all code + outputs)
+    ├── report/
+    │   ├── DL_Lab_4.pdf               <- full pdf lab report
+    │   └── Lab_4.tex                  <- full latex code of lab report
+    └── figures/                       <- generated plots (.eps + .pdf), 600 DPI
+        ├── fig1_sample_images.eps / .pdf
+        ├── fig2_accuracy.eps / .pdf
+        ├── fig3_loss.eps / .pdf
+        ├── fig4_finetune_accuracy.eps / .pdf
+        ├── fig5_confusion_matrix.eps / .pdf
+        └── fig6_misclassified.eps / .pdf
+
+## How to Run
+
+1. Open `DL_LAB_4.ipynb` in Google Colab or Jupyter (GPU runtime recommended for training speed).
+2. Run all cells top to bottom — CIFAR-10 downloads automatically via `tensorflow.keras.datasets`, and VGG16 ImageNet weights download automatically via `tensorflow.keras.applications`, so no manual download is needed.
+3. Generated figures are saved as `.eps` (600 DPI, required submission format) alongside a matching `.pdf` for fast LaTeX compilation.
+
+## Requirements
+
+    numpy
+    pandas
+    matplotlib
+    seaborn
+    scikit-learn
+    tensorflow
+
+## Report
+
+The full lab report (theory, methodology, source code, results, and plot interpretations) is available in `report/Lab_4.tex`.
