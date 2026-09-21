@@ -1,50 +1,72 @@
-# Lab 5 — Comprehensive Study of CNN Training, Regularization, Optimization, Hyperparameter Tuning, Transfer Learning and Cross-Validation (MobileNetV2)
+# CS3807 – Deep Learning Laboratory
 
-**Course:** CS3807 – Deep Learning Laboratory
-**Program:** B.Tech Artificial Intelligence & Data Science, Shiv Nadar University Chennai
-**Experiment 5**
+**B.Tech Artificial Intelligence & Data Science**
+**Shiv Nadar University, Chennai**
 
-## Objective
+## About the Course
 
-Systematically study the effect of weight initialization, regularization, optimization algorithms, CNN hyperparameters, transfer learning, fine-tuning and 5-fold cross-validation on image classification performance, using a single lightweight CNN architecture (MobileNetV2) on the Oxford-IIIT Pet dataset.
-
-## Dataset
-
-- **Source:** Oxford-IIIT Pet Dataset (direct download from robots.ox.ac.uk)
-- **Total Images:** 7,390
-- **Training Images:** 5,173
-- **Validation Images:** 1,108
-- **Testing Images:** 1,109
-- **Classes:** 37 pet breeds
-- **Image Size:** 224 x 224 x 3 (RGB, resized and MobileNetV2-preprocessed)
-- **Missing values:** A small number of corrupt JPEG files, automatically skipped by the tf.data decoding pipeline
-
-## What's in this notebook
-
-- **Dataset Preparation** — direct download and extraction, breed-label parsing from filenames, 70/15/15 train/val/test split, MobileNetV2 preprocessing pipeline
-- **Weight Initialization Study** — Zero, Random, Xavier/Glorot and He initialization compared over 8-epoch runs on a frozen MobileNetV2 base
-- **Regularization Study** — No Regularization, L2, Dropout and Batch Normalization compared over 8-epoch runs
-- **Batch Normalization** — worked numerical example plus a With-BN vs. Without-BN comparison
-- **Optimizer Study** — SGD, Momentum, RMSProp and Adam compared over 8-epoch runs
-- **Hyperparameter Tuning** — learning rate, batch size and dropout rate swept independently over 5-epoch runs
-- **Transfer Learning and Fine-Tuning** — frozen-base feature extraction vs. fine-tuning of block_15, block_16 and Conv_1 at a reduced learning rate
-- **5-Fold Cross-Validation** — four candidate configurations (C1–C4) evaluated across 5 folds to select the final configuration
-- **Final Model Evaluation** — Accuracy, Precision, Recall, F1-score, Confusion Matrix on the untouched test set
-
-## Results Summary
-
-| Metric | Value |
-|---|---|
-| Test Accuracy | 91.88% |
-| Precision (weighted) | 91.75% |
-| Recall (weighted) | 91.56% |
-| F1-score (weighted) | 91.49% |
-| Best 5-Fold CV Configuration | C3 (Dropout 0.5, No BatchNorm, RMSProp, lr=1e-3) |
-| Mean CV Accuracy ± SD (C3) | 90.62% ± 0.54 |
-| Best Optimizer (peak val. accuracy) | Adam, 92.33% (converged by epoch 4) |
-| Total Parameters (final model) | 2,426,725 |
-| Training Time (final model) | 73.46 s |
-
-**Per-class notes:** the confusion matrix is overwhelmingly diagonal across all 37 breeds, with only a small number of off-diagonal misclassifications scattered between individual visually-similar breed pairs rather than concentrated in any one region.
+This repository contains the lab programs completed as part of CS3807 – Deep Learning Laboratory. Each lab focuses on a core concept in deep learning, progressing from foundational neural network models to more advanced architectures, implemented and tested through hands-on programming exercises.
 
 ## Repository Structure
+
+```
+CS3807-Deep-Learning-Lab/
+│
+├── Lab1_Single_Layer_Perceptron/
+│   ├── README.md
+│   └── ...
+│
+├── Lab2_Multi_Layer_Perceptron/
+│   ├── README.md
+│   └── ...
+│
+├── Lab3_.../
+│   ├── README.md
+│   └── ...
+│
+└── README.md   (this file)
+```
+
+Each lab folder contains its own `README.md` with details specific to that experiment — aim, theory, dataset, implementation steps, and output/results.
+
+## List of Experiments
+
+| Lab No. | Title |
+|---------|-------|
+| 1 | Single Layer Perceptron |
+| 2 | Multi Layer Perceptron |
+| 3 | *(to be added)* |
+| 4 | *(to be added)* |
+| ... | ... |
+
+*(Update this table as labs are added.)*
+
+## Tech Stack
+
+- **Language:** Python
+- **Libraries:** NumPy, Pandas, Matplotlib, TensorFlow / Keras / PyTorch *(update based on what you actually use)*
+- **Environment:** Jupyter Notebook / Google Colab / VS Code
+
+## How to Use
+
+1. Clone this repository:
+   ```bash
+   git clone <repo-url>
+   ```
+2. Navigate into the desired lab folder.
+3. Install dependencies (if any):
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Run the notebook/script as described in that lab's README.
+
+## Author
+
+**Name:** *KR Srinidhi*
+**Program:** B.Tech Artificial Intelligence & Data Science
+**Institution:** Shiv Nadar University, Chennai
+**Course Code:** CS3807
+
+## License
+
+This repository is for academic purposes only, as part of coursework under CS3807 – Deep Learning Laboratory.
