@@ -10,36 +10,56 @@ This repository contains the lab programs completed as part of CS3807 – Deep L
 ## Repository Structure
 
 ```
-CS3807-Deep-Learning-Lab/
+Deep-Learning-Lab/
 │
-├── Lab1_Single_Layer_Perceptron/
+├── Lab_1/
 │   ├── README.md
+│   ├── DL_Lab_1.ipynb
+│   ├── figures/
 │   └── ...
 │
-├── Lab2_Multi_Layer_Perceptron/
+├── Lab_2/
 │   ├── README.md
+│   ├── DL_Lab_2.ipynb
+│   ├── figures/
 │   └── ...
 │
-├── Lab3_.../
+├── Lab_3/
 │   ├── README.md
+│   ├── DL_Lab_3.ipynb
+│   ├── figures/
+│   └── ...
+│
+├── ...
+│
+├── Lab_10/
+│   ├── README.md
+│   ├── DL_Lab_10.ipynb
+│   ├── figures/
 │   └── ...
 │
 └── README.md   (this file)
 ```
 
-Each lab folder contains its own `README.md` with details specific to that experiment — aim, theory, dataset, implementation steps, and output/results.
+Each `Lab_n` folder is self-contained and includes:
+- `README.md` — aim, theory, dataset, implementation steps, and results specific to that experiment
+- `DL_Lab_n.ipynb` — the notebook with the implementation
+- `figures/` — plots, architecture diagrams, output visualizations, etc.
 
 ## List of Experiments
 
 | Lab No. | Title |
 |---------|-------|
-| 1 | Single Layer Perceptron |
-| 2 | Multi Layer Perceptron |
-| 3 | *(to be added)* |
-| 4 | *(to be added)* |
-| ... | ... |
-
-*(Update this table as labs are added.)*
+| 1 | Single Layer Perceptron for Binary Classification |
+| 2 | Multi-Layer Perceptron (MLP) for Multi-Class Image Classification |
+| 3 | Convolutional Neural Networks (CNNs) for Image Classification |
+| 4 | Deep Convolutional Neural Network Architectures Using Transfer Learning |
+| 5 | CNN Training, Regularization, Optimization, Hyperparameter Tuning, Transfer Learning and Cross-Validation |
+| 6 | RNN, LSTM and GRU for Sequence Learning and Video Understanding |
+| 7 | Autoencoders, Convolutional Autoencoders, Denoising Autoencoders and Variational Autoencoders |
+| 8 | *(to be added)* |
+| 9 | *(to be added)* |
+| 10 | *(to be added)* |
 
 ## Tech Stack
 
@@ -53,12 +73,15 @@ Each lab folder contains its own `README.md` with details specific to that exper
    ```bash
    git clone <repo-url>
    ```
-2. Navigate into the desired lab folder.
+2. Navigate into the desired lab folder, e.g.:
+   ```bash
+   cd Lab_1
+   ```
 3. Install dependencies (if any):
    ```bash
    pip install -r requirements.txt
    ```
-4. Run the notebook/script as described in that lab's README.
+4. Open and run the notebook (`DL_Lab_n.ipynb`) as described in that lab's README.
 
 ## Author
 
