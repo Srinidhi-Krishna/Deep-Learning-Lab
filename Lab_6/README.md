@@ -50,6 +50,4 @@ Develop an end-to-end understanding of recurrent sequence learning by implementi
 | Seq2Seq Sequence Accuracy | 100.00% |
 | Bidirectional vs. Unidirectional LSTM | 90.86% vs. 84.77% macro F1 (BiLSTM: 11,894 params) |
 
-**Per-activity notes:** all three models share a consistent SITTING ↔ STANDING confusion (a limitation of the underlying static-posture sensor signal rather than the architecture); dynamic-activity errors (e.g., WALKING_UPSTAIRS misclassification) are far more severe for the Vanilla RNN and are largely resolved by LSTM and, especially, GRU.
 
-**Code Repository:** https://github.com/srinidhi-rajamane/cs3807-dl-lab-experiment6
